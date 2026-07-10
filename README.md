@@ -4,6 +4,22 @@ Bistro AI is a restaurant operations portal for managing AI voice-agent behavior
 
 Live demo: https://bistro-ai.vercel.app/
 
+## Demo Seed
+
+Create a fresh demo workspace and three role-based accounts:
+
+```bash
+npm run seed:demo
+```
+
+Default demo credentials:
+
+- Admin: `admin` / `AdminPass123!`
+- Manager: `manager` / `ManagerPass123!`
+- Staff: `staff` / `StaffPass123!`
+
+The script uses `MONGODB_URI` when it is configured; otherwise it writes to the JSON fallback store. Passwords are stored as `scrypt` hashes. Override the credentials with `DEMO_ADMIN_*`, `DEMO_MANAGER_*`, and `DEMO_STAFF_*` environment variables.
+
 ## Current Features
 
 - Operations dashboard with backend analytics, manual refresh, activity feed, report download, and simulated live monitor.
@@ -72,22 +88,6 @@ npm run smoke:prod
 ```
 
 GitHub Actions is configured in `.github/workflows/ci.yml` to run these checks on pushes to `main`/`master` and on pull requests.
-
-## Demo Seed
-
-Create a fresh demo workspace and three role-based accounts:
-
-```bash
-npm run seed:demo
-```
-
-Default demo credentials:
-
-- Admin: `admin` / `AdminPass123!`
-- Manager: `manager` / `ManagerPass123!`
-- Staff: `staff` / `StaffPass123!`
-
-The script uses `MONGODB_URI` when it is configured; otherwise it writes to the JSON fallback store. Passwords are stored as `scrypt` hashes. Override the credentials with `DEMO_ADMIN_*`, `DEMO_MANAGER_*`, and `DEMO_STAFF_*` environment variables.
 
 ## Backend API
 
