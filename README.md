@@ -2,6 +2,8 @@
 
 Bistro AI is a restaurant operations portal for managing AI voice-agent behavior, menu knowledge, call scripts, settings, and activity telemetry.
 
+Live demo: https://bistro-ai.vercel.app/
+
 ## Current Features
 
 - Operations dashboard with backend analytics, manual refresh, activity feed, report download, and simulated live monitor.
