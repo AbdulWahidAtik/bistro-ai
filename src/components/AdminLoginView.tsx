@@ -6,11 +6,23 @@ interface AdminLoginViewProps {
   onAuthenticated: (session: AuthSession) => void;
 }
 
+const demoAccounts = [
+  { label: 'Admin', username: 'admin', password: 'AdminPass123!' },
+  { label: 'Manager', username: 'manager', password: 'ManagerPass123!' },
+  { label: 'Staff', username: 'staff', password: 'StaffPass123!' },
+];
+
 export default function AdminLoginView({ notice = '', onAuthenticated }: AdminLoginViewProps) {
   const [username, setUsername] = useState('admin');
   const [password, setPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+
+  const fillDemoAccount = (account: (typeof demoAccounts)[number]) => {
+    setUsername(account.username);
+    setPassword(account.password);
+    setErrorMessage('');
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -88,6 +100,35 @@ export default function AdminLoginView({ notice = '', onAuthenticated }: AdminLo
           >
             {isSubmitting ? 'Signing in...' : 'Sign In'}
           </button>
+
+          <div className="rounded-xl border border-white/[0.06] bg-white/[0.025] p-3">
+            <div className="flex items-center justify-between gap-3 mb-2">
+              <h2 className="font-geist text-xs font-bold uppercase tracking-wider text-on-surface">
+                Demo Accounts
+              </h2>
+              <span className="text-[10px] font-semibold text-primary">Live demo</span>
+            </div>
+            <p className="text-[11px] text-on-surface-variant/70 mb-3">
+              Click an account to fill the form.
+            </p>
+            <div className="space-y-2">
+              {demoAccounts.map((account) => (
+                <button
+                  key={account.username}
+                  type="button"
+                  onClick={() => fillDemoAccount(account)}
+                  className="w-full rounded-lg border border-white/[0.05] bg-[#0b0e10]/80 px-3 py-2 text-left transition-all hover:border-primary/40 hover:bg-primary/5 focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer"
+                >
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="text-xs font-geist font-bold text-on-surface">{account.label}</span>
+                    <span className="text-[11px] font-mono text-on-surface-variant/80">
+                      {account.username} / {account.password}
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
         </form>
       </div>
     </div>
