@@ -1,0 +1,6 @@
+{
+  "name": "Bistro AI",
+  "description": "Interactive management portal for AI voice agents, digital menus, call logs, and voice scripts.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

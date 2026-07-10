@@ -1,0 +1,121 @@
+@import "tailwindcss";
+@source "./**/*.{ts,tsx}";
+@source "../index.html";
+
+@theme {
+  --color-inverse-on-surface: #2d3133;
+  --color-on-error-container: #ffdad6;
+  --color-on-primary: #003915;
+  --color-surface: #101415;
+  --color-on-primary-container: #004b1e;
+  --color-outline: #869585;
+  --color-tertiary-fixed: #e5e2e3;
+  --color-surface-container-high: #272a2c;
+  --color-surface-tint: #4ae176;
+  --color-secondary-fixed: #ffddb8;
+  --color-on-error: #690005;
+  --color-surface-dim: #101415;
+  --color-outline-variant: #3d4a3d;
+  --color-on-secondary-container: #5b3800;
+  --color-tertiary-container: #adabac;
+  --color-on-tertiary-fixed-variant: #474647;
+  --color-tertiary-fixed-dim: #c8c6c7;
+  --color-secondary: #ffb95f;
+  --color-on-tertiary-container: #403f41;
+  --color-secondary-container: #ee9800;
+  --color-background: #101415;
+  --color-on-secondary: #472a00;
+  --color-surface-bright: #363a3b;
+  --color-on-surface-variant: #bccbb9;
+  --color-surface-container-low: #191c1e;
+  --color-on-tertiary: #303031;
+  --color-on-secondary-fixed: #2a1700;
+  --color-on-secondary-fixed-variant: #653e00;
+  --color-on-tertiary-fixed: #1b1b1c;
+  --color-on-background: #e0e3e5;
+  --color-error: #ffb4ab;
+  --color-error-container: #93000a;
+  --color-primary-fixed: #6bff8f;
+  --color-inverse-surface: #e0e3e5;
+  --color-primary: #4be277;
+  --color-on-primary-fixed-variant: #005321;
+  --color-tertiary: #c9c6c7;
+  --color-surface-container-lowest: #0b0f10;
+  --color-on-primary-fixed: #002109;
+  --color-surface-variant: #323537;
+  --color-primary-fixed-dim: #4ae176;
+  --color-inverse-primary: #006e2f;
+  --color-on-surface: #e0e3e5;
+  --color-surface-container-highest: #323537;
+  --color-primary-container: #22c55e;
+  --color-surface-container: #1d2022;
+  --color-secondary-fixed-dim: #ffb95f;
+
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-geist: "Geist", system-ui, -apple-system, sans-serif;
+
+  --spacing-margin-desktop: 32px;
+  --spacing-margin-mobile: 16px;
+  --spacing-gutter: 24px;
+  
+  --color-glass-bg: rgba(18, 22, 26, 0.65);
+  --color-glass-border: rgba(255, 255, 255, 0.06);
+  --color-glass-hover-border: rgba(74, 225, 118, 0.25);
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .glass-panel {
+    background: var(--color-glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--color-glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  }
+  .glass-card {
+    background: rgba(29, 32, 34, 0.45);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-glass-border);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .glass-card:hover {
+    transform: translateY(-2px) scale(1.01);
+    border-color: var(--color-glass-hover-border);
+    box-shadow: 0 12px 28px 0 rgba(74, 225, 118, 0.08), inset 0 0 12px rgba(255, 255, 255, 0.02);
+  }
+  .glow-green {
+    box-shadow: 0 0 20px rgba(74, 225, 118, 0.15);
+  }
+  .glow-red {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.25);
+  }
+}
+
+body {
+  background-color: #0b0e10;
+  color: #e0e3e5;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-image: radial-gradient(circle at 50% 0%, rgba(74, 225, 118, 0.03) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(29, 32, 34, 0.2);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(74, 225, 118, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 225, 118, 0.4);
+}
