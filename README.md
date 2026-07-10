@@ -256,11 +256,22 @@ GEMINI_MODEL="gemini-2.0-flash"
 - Set `MONGODB_URI` for durable production data.
 - Set `GEMINI_API_KEY` if real AI generation should be enabled.
 - Set `APP_URL` to the deployed frontend URL.
+- Set `VITE_API_URL` to the deployed backend URL when the frontend and API are deployed separately.
 - Set `SERVE_STATIC=true` when one Express service should serve both frontend and API.
 - Keep `REQUEST_LOGGING=true` unless your hosting platform already captures equivalent request logs.
 - Tune rate limits for the deployment size and place stronger limits in front of public deployments.
 - Keep `.env` out of source control.
 - Confirm production responses include security headers by running `npm run smoke:prod`.
+
+### Split Frontend/API Deployment
+
+Recommended portfolio setup:
+
+- Frontend on Vercel with `VITE_API_URL` set to the Render backend URL.
+- Backend on Render as a Node web service with `npm start`.
+- MongoDB Atlas for persistent data.
+
+Render provides a `PORT` environment variable automatically; the API also supports `API_PORT` for local development.
 
 ## Docker
 

@@ -11,7 +11,7 @@ import { connectMongoStore, mongoStore } from './mongo-store.mjs';
 import { buildOperationsReport } from './report-service.mjs';
 import { seedData } from './seed-data.mjs';
 
-const port = Number(process.env.API_PORT || 3001);
+const port = Number(process.env.PORT || process.env.API_PORT || 3001);
 const mongoUri = process.env.MONGODB_URI || '';
 const serveStatic = process.env.SERVE_STATIC === 'true';
 const requestLogging = process.env.REQUEST_LOGGING !== 'false';

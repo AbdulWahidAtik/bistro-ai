@@ -12,6 +12,7 @@ export interface BackendWorkspace {
 const authTokenKey = 'bistro-ai:auth-token';
 const authSessionKey = 'bistro-ai:auth-session';
 const authExpiredEvent = 'bistro-ai:auth-expired';
+const apiBaseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 export interface BackendHealth {
   ok: boolean;
@@ -74,6 +75,10 @@ function handleUnauthorized(path: string, status: number) {
   window.dispatchEvent(new CustomEvent(authExpiredEvent));
 }
 
+function apiUrl(path: string) {
+  return `${apiBaseUrl}${path}`;
+}
+
 async function apiRequest<T>(path: string): Promise<T> {
   const token = getAuthToken();
   const headers: Record<string, string> = {};
@@ -82,7 +87,7 @@ async function apiRequest<T>(path: string): Promise<T> {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(path, { headers });
+  const response = await fetch(apiUrl(path), { headers });
 
   if (!response.ok) {
     handleUnauthorized(path, response.status);
@@ -100,7 +105,7 @@ async function apiBlobRequest(path: string): Promise<{ blob: Blob; filename: str
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(path, { headers });
+  const response = await fetch(apiUrl(path), { headers });
 
   if (!response.ok) {
     handleUnauthorized(path, response.status);
@@ -141,7 +146,7 @@ async function apiJsonRequest<T>(path: string, method: string, body?: unknown): 
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(path, {
+  const response = await fetch(apiUrl(path), {
     method,
     headers,
     body: body === undefined ? undefined : JSON.stringify(body),
