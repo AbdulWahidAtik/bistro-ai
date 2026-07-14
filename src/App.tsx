@@ -73,8 +73,12 @@ export default function App() {
 
   useEffect(() => {
     let isMounted = true;
+    const authCheckTimeoutMs = 8000;
+    const authCheckTimeout = new Promise<never>((_, reject) => {
+      window.setTimeout(() => reject(new Error('Auth check timed out')), authCheckTimeoutMs);
+    });
 
-    loadBackendHealth()
+    Promise.race([loadBackendHealth(), authCheckTimeout])
       .then((health) => {
         if (!isMounted) return;
         setIsAuthRequired(health.authEnabled);
