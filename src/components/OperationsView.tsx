@@ -319,7 +319,7 @@ export default function OperationsView({
 
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
           <div className="relative w-full md:w-80">
-            <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant/60 text-sm">
+            <span className="material-symbols-outlined pointer-events-none absolute left-3.5 top-1/2 flex h-4 w-4 -translate-y-1/2 items-center justify-center text-[18px] leading-none text-on-surface-variant/60">
               search
             </span>
             <input
